@@ -8,6 +8,10 @@ function Form({todos, setTodos, inputText, setInputText}) {
     
       const submitTodoHandler = (todo) => {
         todo.preventDefault();
+
+        if (inputText === "") {
+          alert('try to do something :)')
+        } else {
         setTodos([
           ...todos,
           {
@@ -17,7 +21,7 @@ function Form({todos, setTodos, inputText, setInputText}) {
           },
           
           
-        ]);
+        ])};
         
 
     setInputText("");
