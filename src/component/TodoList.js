@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Todo from "./Todo";
 
-function TodoList({ todos, setTodos, setStatus, status , filteredTodos}) {
+function TodoList({ todos, setTodos, setStatus, status, filteredTodos }) {
   const statusHandler = (e) => {
     // console.log(e.target.name);
 
@@ -11,15 +11,10 @@ function TodoList({ todos, setTodos, setStatus, status , filteredTodos}) {
   };
 
   const deleteCompletedTodos = () => {
-
-
-
-setTodos(todos.filter((el) => el.completed === false));
-
-
+    setTodos(todos.filter((el) => el.completed === false));
   };
 
-  
+
 
   return (
     <div className="main">
@@ -37,19 +32,23 @@ setTodos(todos.filter((el) => el.completed === false));
 
       <footer className="footer">
         <span className="todo-count">
-          <strong>{filteredTodos.length}</strong>
-          items left
+          <strong>{filteredTodos.length}  </strong>
+          {filteredTodos.length <= 1  ? "item left" : "items left" }
         </span>
 
         <ul onClick={statusHandler} className="filters">
           <li>
-            <a href='#0' name="all" className={`${status === "all" ? "selected" : ""}`}>
+            <a
+              href="#0"
+              name="all"
+              className={`${status === "all" ? "selected" : ""}`}
+            >
               All
             </a>
           </li>
           <li>
             <a
-            href='#0'
+              href="#0"
               name="active"
               className={`${status === "active" ? "selected" : ""}`}
             >
@@ -58,16 +57,18 @@ setTodos(todos.filter((el) => el.completed === false));
           </li>
           <li>
             <a
-            href='#0'
+              href="#0"
               name="completed"
               className={`${status === "completed" ? "selected" : ""}`}
             >
-              Completed
+              Completed 
             </a>
           </li>
         </ul>
 
-        <button onClick={deleteCompletedTodos} className="clear-completed">Clear Completed</button>
+        <button onClick={deleteCompletedTodos} className="clear-completed">
+          Clear Completed
+        </button>
       </footer>
     </div>
   );
